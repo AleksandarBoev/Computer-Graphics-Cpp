@@ -1,0 +1,3 @@
+﻿  Testing.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\testing\testing.cpp(28): warning C4305: 'argument': truncation from 'double' to 'float'
+  Testing.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\Testing.exe
