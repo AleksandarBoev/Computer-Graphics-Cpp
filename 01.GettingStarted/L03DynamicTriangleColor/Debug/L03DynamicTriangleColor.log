@@ -1,0 +1,8 @@
+﻿  DynamicTriangleColor.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(179): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(186): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(193): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(200): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(207): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(215): warning C4305: '+=': truncation from 'double' to 'float'
+  L03DynamicTriangleColor.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\L03DynamicTriangleColor.exe

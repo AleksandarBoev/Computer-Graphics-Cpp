@@ -1,9 +1,8 @@
-﻿  glad.c
-  CreatingAWindow.cpp
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(130): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(137): warning C4305: '+=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(143): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(149): warning C4305: '+=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(155): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(162): warning C4305: '+=': truncation from 'double' to 'float'
+﻿  CreatingAWindow.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(131): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(138): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(144): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(150): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(156): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(163): warning C4305: '+=': truncation from 'double' to 'float'
   L01CreatingAWindow.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\L01CreatingAWindow.exe

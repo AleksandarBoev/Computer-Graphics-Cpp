@@ -90,6 +90,7 @@ int main()
 		//______________________
 		glfwSwapBuffers(window); //drawing takes time, so a double buffer is used
 		glfwPollEvents(); //triggers the callback events
+		//std::cout << glfwGetTime() << std::endl; //slows down the process
 	}
 
 	glfwTerminate(); //stop everything that glfw is doing and free up the memory. glfwInitiate() to start again.

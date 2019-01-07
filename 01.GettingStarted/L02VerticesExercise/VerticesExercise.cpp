@@ -119,7 +119,8 @@ int main()
 	1, 2, 3
 	*/
 	unsigned int indices[] = {  // note that we start from 0!
-		0, 2  // second Triangle
+		0, 1, 3,
+		1, 2, 3
 	};
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
