@@ -89,7 +89,7 @@ int main()
 	glShaderSource(fragmentShader2, 1, &fragmentShader2Source, NULL); //TODO
 	glCompileShader(fragmentShader2);
 	// link shaders
-	int shaderProgram = glCreateProgram();
+	int shaderProgram = glCreateProgram(); //can be unsigned int also
 	glAttachShader(shaderProgram, vertexShader);
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
@@ -130,7 +130,7 @@ int main()
 	unsigned int VBO3, VAO3;
 
 	glGenVertexArrays(1, &VAO1); // we can also generate multiple VAOs or buffers at the same time
-	glGenVertexArrays(1, &VAO2); 
+	glGenVertexArrays(1, &VAO2);
 	glGenVertexArrays(1, &VAO3);
 
 	glGenBuffers(1, &VBO1);
@@ -163,7 +163,7 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 	glEnableVertexAttribArray(0);
 
-
+	int counter = 0;
 
 	while (!glfwWindowShouldClose(window))
 	{

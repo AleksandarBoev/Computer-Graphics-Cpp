@@ -1,8 +1,9 @@
 ﻿  DynamicTriangleColor.cpp
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(179): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(186): warning C4305: '+=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(193): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(200): warning C4305: '+=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(207): warning C4305: '-=': truncation from 'double' to 'float'
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(215): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(132): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(194): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(202): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(211): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(220): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l03dynamictrianglecolor\dynamictrianglecolor.cpp(228): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   L03DynamicTriangleColor.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\L03DynamicTriangleColor.exe

@@ -27,8 +27,7 @@ const int SCR_HEIGHT = 600;
 void processInput(GLFWwindow *window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-void processColors(GLFWwindow *window, float& red, float& green, float& blue);
-
+void processColors(GLFWwindow *window, float& red, float& green, float& blue, float value, float& timePressed);
 
 int main()
 {
@@ -94,6 +93,9 @@ int main()
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
 	//vao and vbo
 	float triangle[] = {
 		0.5f, 1.0f, 0.0f,  // left
@@ -115,17 +117,24 @@ int main()
 
 	glUseProgram(shaderProgram); //make this program the current main one
 	int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor"); //get the location of the uniform variable
-	glBindVertexArray(VAO); //make this vertex array object the current main one
+	glBindVertexArray(VAO); //make this vertex array object the current main one, since only 1 object is drawn
 
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //set the colors, which the glClear will use
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //set the window colors, which the glClear will use
 
-	float red = 0.0f, green = 0.0f, blue = 0.0f;
+	float red = 1.0f, green = 0.0f, blue = 0.0f;
+
+	float timePressed = 0.0f;
 
 	while (!glfwWindowShouldClose(window))
 	{
 		// input
 		processInput(window);
-		processColors(window, red, green, blue);
+		float currentTime = glfwGetTime();
+		if (glfwGetTime() - timePressed > 2.0f)
+		{
+			processColors(window, red, green, blue, 0.3f, timePressed);
+			glUniform4f(vertexColorLocation, red, green, blue, 1.0f);
+		}
 
 		// render
 		// clear the colorbuffer
@@ -141,7 +150,7 @@ int main()
 		//int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor"); //original code
 		//original function is glUniform. 4f is added because 4 floats are inserted into the uniform, which is at the given position
 		//glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f); //original
-		glUniform4f(vertexColorLocation, red, green, blue, 1.0f); 
+		//glUniform4f(vertexColorLocation, red, green, blue, 1.0f); 
 
 		// now render the triangle
 		//glBindVertexArray(VAO); //original code
@@ -168,52 +177,61 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void processColors(GLFWwindow *window, float& red, float& green, float& blue)
+void processColors(GLFWwindow *window, float& red, float& green, float& blue, float value, float& timePressed)
 {
 	//These are the num keys (1, 2, 3, 4, 5, 6)
 	if (glfwGetKey(window, GLFW_KEY_KP_1) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
 		if (red <= 0.0)
 			return;
 		else
-			red -= 0.0007;
+			red -= value;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_KP_4) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
 		if (red >= 1.0)
 			return;
 		else
-			red += 0.0007;
+			red += value;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_KP_2) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
+		std::cout << "Button pressed!" << std::endl;
 		if (green <= 0.0)
 			return;
 		else
-			green -= 0.0007;
+			green -= value;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_KP_5) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
+		std::cout << "Button pressed!" << std::endl;
 		if (green >= 1.0)
 			return;
 		else
-			green += 0.0007;
+			green += value;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_KP_3) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
 		if (blue <= 0.0)
 			return;
 		else
-			blue -= 0.0007;
+			blue -= value;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_KP_6) == GLFW_PRESS)
 	{
+		timePressed = glfwGetTime();
 		if (blue >= 1.0)
 			return;
 		else
 		{
-			blue += 0.0007;
+			blue += value;
 		}
 	}
 
+	
 }
