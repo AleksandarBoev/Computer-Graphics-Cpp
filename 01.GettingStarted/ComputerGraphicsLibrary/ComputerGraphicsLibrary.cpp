@@ -44,6 +44,27 @@ float basicTriangleCoordinates[] =
 	 0.0f,  0.5f, 0.0f //middle top
 };
 
+GLFWwindow* initializeWindow(int width, int height, std::string windowName, float red, float green, float blue);
+void processInputEndProgram(GLFWwindow *window);
+void changeWindowColor(float red, float green, float blue);
+void processInputWindowColor(GLFWwindow* window, int redIncreaseButton, int redDecreaseButton,
+	int greenIncreaseButton, int greenDecreaseButton,
+	int blueIncreaseButton, int blueDecreaseButton,
+	float& red, float& green, float& blue, float value);
+void generateTriangle(const char *vertexShaderSource, const char *fragmentShaderSource,
+	float triangleCoordinates[], int size, int drawProcessType, unsigned int& VAO, int& shaderProgram);
+void drawTriangle(int& shaderProgram, unsigned int& VAO, int drawType, float triangleCoordinates[], int size);
+void moveXCoordinates(float vertices[], float value, int arraySize);
+void moveYCoordinates(float vertices[], float value, int arraySize);
+bool moveXCoordinatesAndCheckIfOutOfBounds(float vertices[], float value, int arraySize);
+bool moveYCoordinatesAndCheckIfOutOfBounds(float vertices[], float value, int arraySize);
+bool moveXCoordinatesStopBeforeBounds(float vertices[], float value, int arraySize);
+bool moveYCoordinatesStopBeforeBounds(float vertices[], float value, int arraySize);
+int generateShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+int generateBasicShaderProgram();
+
+
+
 GLFWwindow* initializeWindow(int width, int height, std::string windowName, float red, float green, float blue)
 {
 	glfwInit();
@@ -160,47 +181,7 @@ void processInputWindowColor(GLFWwindow* window, int redIncreaseButton, int redD
 void generateTriangle(const char *vertexShaderSource, const char *fragmentShaderSource,
 	float triangleCoordinates[], int size, int drawProcessType, unsigned int& VAO, int& shaderProgram)
 {
-	//Vertex shader creation and inspection of code
-	int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
-	// check for shader compile errors
-	int success;
-	char infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
-
-	// Fragment shader creation and inspection of code
-	int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
-	// check for shader compile errors
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
-
-	//Creating, linking and checking the shader program
-	shaderProgram = glCreateProgram(); //can be unsigned int also
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-	if (!success) {
-		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-	}
-
-	//Deleting the unessecary shaders
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	shaderProgram = generateShaderProgram(vertexShaderSource, fragmentShaderSource);
 
 	//Creating and setting up the VBO
 	glGenVertexArrays(1, &VAO);
@@ -219,6 +200,7 @@ void generateTriangle(const char *vertexShaderSource, const char *fragmentShader
 
 void drawTriangle(int& shaderProgram, unsigned int& VAO, int drawType, float triangleCoordinates[], int size)
 {
+	//for this to work, the VBO needs to be active
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size, triangleCoordinates, GL_DYNAMIC_DRAW);
 
 	glUseProgram(shaderProgram);
@@ -357,5 +339,52 @@ bool moveYCoordinatesStopBeforeBounds(float vertices[], float value, int arraySi
 		moveYCoordinates(vertices, value, arraySize);
 
 	return outOfBounds;
+}
+
+int generateBasicShaderProgram()
+{
+	return generateShaderProgram(basicVertexShaderSource, basicFragmentShaderSource);
+}
+
+int generateShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource)
+{
+	int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	glCompileShader(vertexShader);
+	// check for shader compile errors
+	int success;
+	char infoLog[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+	}
+	// fragment shader
+	int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+	// check for shader compile errors
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+	}
+	// link shaders
+	int shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+	// check for linking errors
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+	}
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
+	return shaderProgram;
 }
 

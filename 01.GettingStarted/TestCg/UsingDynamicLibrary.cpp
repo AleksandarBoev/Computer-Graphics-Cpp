@@ -53,7 +53,7 @@ int main()
 		//glUseProgram(shaderProgram);
 		//glBindVertexArray(VAO);
 		//glDrawArrays(GL_TRIANGLES, 0, 3); //GL_TRIANGLE / GL_LINES / GL_POINTS
-		drawTriangle(shaderProgram, VAO, GL_TRIANGLES, triangleCoordinates, 9);
+		drawTriangle(shaderProgram, VAO, GL_LINE_LOOP, triangleCoordinates, 9);
 
 		//______________________
 		glfwSwapBuffers(window); //drawing takes time, so a double buffer is used

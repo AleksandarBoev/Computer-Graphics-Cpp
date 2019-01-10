@@ -187,7 +187,7 @@ int main()
 		//and then draw the third one
 		glUseProgram(shaderProgram2);
 		glBindVertexArray(VAO3);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_LINE_LOOP, 0, 3);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
