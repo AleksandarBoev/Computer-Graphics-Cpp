@@ -1,0 +1,4 @@
+﻿  Transformations.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l05transformations\transformations.cpp(94): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l05transformations\transformations.cpp(104): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  L05Transformations.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\L05Transformations.exe

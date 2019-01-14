@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
-#include "ComputerGraphicsLibrary.h"
+//#include "ComputerGraphicsLibrary.h"
 
 const char *basicVertexShaderSource =
 "#version 450 core\n" //version 4.5 of OpenGL
@@ -11,6 +11,27 @@ const char *basicVertexShaderSource =
 "void main()\n"
 "{\n"
 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" //vec4 is 3D (x, y, z) + "perspective division" (1.0)
+"}\0";
+
+const char *textureAndTransformationVertexShaderSource =
+"#version 450 core\n"
+"layout(location = 0) in vec3 aPos;\n"
+"layout(location = 1) in vec2 aTexCoord;\n"
+"out vec2 TexCoord;\n"
+"uniform mat4 transform;\n"
+"void main()\n"
+"{\n"
+"	gl_Position = transform * vec4(aPos, 1.0f);\n"
+"	TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n"
+"}\0";
+
+const char *transformationVertexShaderSource =
+"#version 450 core\n"
+"layout(location = 0) in vec3 aPos;\n"
+"uniform mat4 transform;\n"
+"void main()\n"
+"{\n"
+"	gl_Position = transform * vec4(aPos, 1.0f);\n"
 "}\0";
 
 const char *basicFragmentShaderSource =
