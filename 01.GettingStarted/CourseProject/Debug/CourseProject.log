@@ -1,6 +1,0 @@
-﻿  CgWindow.cpp
-c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\courseproject\cgwindow.cpp(66): warning C4150: deletion of pointer to incomplete type 'GLFWwindow'; no destructor called
-  c:\aleksandaruser\programming\computergraphics2\include\glfw\glfw3.h(789): note: see declaration of 'GLFWwindow'
-  CourseMain.cpp
-  Generating Code...
-  CourseProject.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\CourseProject.exe

@@ -114,11 +114,15 @@ int main()
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
 	//0.0, 0.0 = x, y --> meaning at the center. x = 0.5 means right from the center. y = -0.5 means lower than center
-	float vertices[] = { //triangle coordinates
-	-0.5f, -0.5f, 0.0f, //bottom left
-	 0.5f, -0.5f, 0.0f, //borrom right
-	 0.0f,  0.5f, 0.0f //middle top
-	};
+//	float vertices[] = { //triangle coordinates
+//	-0.5f, -0.5f, 0.0f, //bottom left
+//	 0.5f, -0.5f, 0.0f, //borrom right
+//	 0.0f,  0.5f, 0.0f //middle top
+//	};
+
+	float* vertices = new float[9] {-0.5f, -0.5f, 0.0f, //bottom left
+		0.5f, -0.5f, 0.0f, //borrom right
+		0.0f, 0.5f, 0.0f};
 
 	unsigned int VBO, VAO;
 	glGenVertexArrays(1, &VAO);

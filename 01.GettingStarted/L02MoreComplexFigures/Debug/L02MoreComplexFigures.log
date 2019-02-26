@@ -1,4 +1,5 @@
-﻿  MoreComplexFigures.cpp
+﻿  glad.c
+  MoreComplexFigures.cpp
 c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\computergraphicslibrary\stdafx.h(10): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
   c:\aleksandaruser\programming\computergraphics2\include\glad\glad.h(33): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
   L02MoreComplexFigures.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\L02MoreComplexFigures.exe

@@ -50,5 +50,8 @@
     <ClCompile Include="ComputerGraphicsLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NeededIncludes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

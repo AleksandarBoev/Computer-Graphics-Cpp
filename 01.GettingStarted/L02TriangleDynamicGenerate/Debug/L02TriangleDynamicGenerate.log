@@ -1,0 +1,8 @@
+﻿  glad.c
+  DynamicTriangleGenerate.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(73): error C2374: 'vertexShader': redefinition; multiple initialization
+  c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(59): note: see declaration of 'vertexShader'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(77): error C2086: 'int success': redefinition
+  c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(63): note: see declaration of 'success'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(78): error C2086: 'char infoLog[512]': redefinition
+  c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l02triangledynamicgenerate\dynamictrianglegenerate.cpp(64): note: see declaration of 'infoLog'

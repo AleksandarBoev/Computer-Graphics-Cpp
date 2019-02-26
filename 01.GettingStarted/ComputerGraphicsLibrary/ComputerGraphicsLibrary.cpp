@@ -42,6 +42,14 @@ const char *basicFragmentShaderSource =
 "   FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n" //red, green, blue and alpha (opacity). a.k.a. RGBA
 "}\n\0";
 
+const char *fragmentShaderSourceDynamic = "#version 450 core\n"
+"out vec4 FragColor;\n"
+"uniform vec4 ourColor;\n"
+"void main()\n"
+"{\n"
+"   FragColor = ourColor;\n"
+"}\n\0";
+
 /*
 	How to change the color:
 	1) The VAO and shader program need to be the current/main ones at the moment of changing the color.
@@ -222,7 +230,7 @@ void generateTriangle(const char *vertexShaderSource, const char *fragmentShader
 void drawTriangle(int& shaderProgram, unsigned int& VAO, int drawType, float triangleCoordinates[], int size)
 {
 	//for this to work, the VBO needs to be active
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size, triangleCoordinates, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size, triangleCoordinates, GL_DYNAMIC_DRAW); //needed for movement
 
 	glUseProgram(shaderProgram);
 

@@ -1,0 +1,15 @@
+﻿  RealCourseProject.cpp
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(162): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(201): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(209): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(217): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(225): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(233): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(241): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(301): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(308): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(315): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(322): warning C4305: '+=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(329): warning C4305: '-=': truncation from 'double' to 'float'
+c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\realcourseproject\realcourseproject.cpp(337): warning C4305: '+=': truncation from 'double' to 'float'
+  RealCourseProject.vcxproj -> C:\AleksandarUser\Programming\GitHubRepositories\TU-Computer-Graphics-Cpp\01.GettingStarted\Debug\RealCourseProject.exe

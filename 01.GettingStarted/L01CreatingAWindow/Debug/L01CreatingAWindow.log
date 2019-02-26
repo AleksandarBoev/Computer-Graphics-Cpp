@@ -1,4 +1,5 @@
-﻿  CreatingAWindow.cpp
+﻿  glad.c
+  CreatingAWindow.cpp
 c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(131): warning C4305: '-=': truncation from 'double' to 'float'
 c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(138): warning C4305: '+=': truncation from 'double' to 'float'
 c:\aleksandaruser\programming\githubrepositories\tu-computer-graphics-cpp\01.gettingstarted\l01creatingawindow\creatingawindow.cpp(144): warning C4305: '-=': truncation from 'double' to 'float'

@@ -8,7 +8,9 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
-void processInput(GLFWwindow *window, float& x, float& y, float speed);
+void processInput(GLFWwindow *window, float& x, float& y, float speed, float& scale1, float& scale2, float& scale3,
+	float& rotateValue, int transformLoc);
+void printVerticesCoordinates(float vertices[], int size);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -20,7 +22,7 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	int shaderProgram = generateShaderProgram(transformationVertexShaderSource, basicFragmentShaderSource);
+	int shaderProgram = generateShaderProgram(transformationVertexShaderSource, fragmentShaderSourceDynamic);
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
@@ -51,58 +53,47 @@ int main()
 	// position attribute
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	
+
 	float timePressed = 0.0f;
 	float x = 0.0, y = 0.0;
 	float depth = 0.0;
 
 	float scale1 = 1.0, scale2 = 1.0, scale3 = 1.0;
+	glUseProgram(shaderProgram);
 
+	glm::mat4 transform = glm::mat4(1.0f);
+
+	float rotateValue = 0.0f;
+
+	unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+	std::cout << transformLoc;
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
-		// input
-		// -----
-		processInputEndProgram(window);
+		processInputEndProgram(window); //can be under processInput
 
-		//glClearColor(0.2f, 0.3f, 0.3f, 1.0f); 
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT); //can be under processInput;
 
-		// render
-		// ------
-	//	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	//	glClear(GL_COLOR_BUFFER_BIT);
-
-		
-
-		// create transformations
-		
-		//glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		//transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-		//transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-		// get matrix's uniform location and set matrix
 		//ourShader.use();
-		glUseProgram(shaderProgram);
-		unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+		
 
-		//glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-		if (true) //glfwGetTime() - timePressed > 0.5f
-		{
-			glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity ma
-			processInput(window, x, y, 0.0007);
-			transform = glm::translate(transform, glm::vec3(x, y, 1.0));
-			//x -= 0.00001;
-			//depth += 0.00005;
-			//transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		//glm::mat4 transform = glm::mat4(1.0f); // NEEDS to be here for some reason and not outside the cicle. Otherwise nothing is drawn
+		processInput(window, x, y, 0.0007f, scale1, scale2, scale3, rotateValue, transformLoc);
+		//transform = glm::translate(transform, glm::vec3(x, y, 1.0));
+		//x -= 0.00001;
+		//depth += 0.00005;
+		//transform = glm::rotate(transform, 0.05f, glm::vec3(0.0f, 0.0f, 1.0f));
 
-			//scale 1 looks like it is stretching/flattening on the horizontal. And scale 2 same for the vertical
-		//	transform = glm::scale(transform, glm::vec3(scale1, scale2, 1.0)); 
-		//	scale1 -= 0.0001;
-			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-			timePressed = glfwGetTime();
-		}
+		//scale 1 looks like it is stretching/flattening on the horizontal. And scale 2 same for the vertical
+		//transform = glm::scale(transform, glm::vec3(scale1, scale2, 1.0)); 
+	//	scale1 -= 0.0001;
+
+		//use "transformLoc" (which is connected to the shader uniform variable named "transform")
+		//to change data in the vertexShader. The data, which will change the data is the glm::mat4 "transform"
+		//glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform)); 
+		
+		//printVerticesCoordinates(vertices, 12); //moving around the object does NOT change its coordinates
 
 		// render container
 		glBindVertexArray(VAO);
@@ -143,22 +134,68 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window, float& x, float& y, float speed)
+void processInput(GLFWwindow *window, float& x, float& y, float speed, float& scale1, float& scale2, float& scale3,
+	float& rotateValue, int transformLoc)
 {
+	//NEEDS to be here. Tried initializing it outside the cicle and passing it as a parameter, but
+	//for some reason the program does not draw the object unless the transform variable is initialized 
+	//for each cicle. The transformLoc variable does not share this problem and can be outside the cicle.
+	glm::mat4 transform2 = glm::mat4(1.0f); 
+
 	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-	{
 		x += speed;
-	}
 	else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-	{
 		x -= speed;
-	}
 	else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-	{
 		y += speed;
-	}
 	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-	{
 		y -= speed;
+	else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+		scale1 -= speed;
+	else if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
+		scale1 += speed;
+	else if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
+		scale2 -= speed;
+	else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+		scale2 += speed;
+	else if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
+		scale3 -= speed;
+	else if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+		scale3 += speed;
+	else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		rotateValue += speed;
+	else if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		rotateValue -= speed;
+
+	transform2 = glm::scale(transform2, glm::vec3(scale1, scale2, scale3));
+	transform2 = glm::translate(transform2, glm::vec3(x, y, 1.0));
+	transform2 = glm::rotate(transform2, rotateValue, glm::vec3(0.0f, 0.0f, 1.0f));
+
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform2));
+}
+
+void printVerticesCoordinates(float vertices[], int size)
+{
+	{
+		for (int i = 0; i < size; i++)
+		{
+			char currentCoordinate;
+			switch (i % 3)
+			{
+			case 0:
+				currentCoordinate = 'x';
+				break;
+
+			case 1:
+				currentCoordinate = 'y';
+				break;
+
+			case 2:
+				currentCoordinate = 'z';
+				break;
+			}
+			std::cout << currentCoordinate << i / 3 + 1 << " = " << vertices[i] << " ";
+		}
+		std::cout << std::endl;
 	}
 }
